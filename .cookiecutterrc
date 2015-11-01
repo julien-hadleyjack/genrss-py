@@ -1,0 +1,34 @@
+# This file exists so you can easily regenerate your project.
+#
+# Unfortunately cookiecutter can't use this right away so
+# you have to copy this file to ~/.cookiecutterrc
+
+default_context:
+
+    appveyor:                  'no'
+    c_extension_optional:      'no'
+    c_extension_support:       'no'
+    codacy:                    'yes'
+    codeclimate:               'yes'
+    codecov:                   'no'
+    command_line_interface:    'no'
+    coveralls:                 'no'
+    distribution_name:         'genrss-py'
+    email:                     'github@jlhj.de'
+    full_name:                 'Julien Hadley Jack'
+    github_username:           'julien-hadleyjack'
+    landscape:                 'yes'
+    package_name:              'genrss'
+    project_name:              'Generate RSS feed for get_iplayer'
+    project_short_description: 'Generate RSS feed for get_iplayer.'
+    release_date:              'today'
+    repo_name:                 'genrss-py'
+    requiresio:                'yes'
+    scrutinizer:               'yes'
+    sphinx_theme:              'readthedocs'
+    test_matrix_configurator:  'no'
+    test_runner:               'pytest'
+    travis:                    'yes'
+    version:                   '0.1.0'
+    website:                   'http://hadleyjack.de'
+    year:                      'now'

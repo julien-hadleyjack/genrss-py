@@ -1,0 +1,5 @@
+genrss
+======
+
+.. automodule:: genrss
+    :members:
