@@ -11,14 +11,15 @@ Bug reports
 When `reporting a bug <https://github.com/julien-hadleyjack/genrss-py/issues>`_ please include:
 
     * Your operating system name and version.
+    * The python version.
     * Any details about your local setup that might be helpful in troubleshooting.
     * Detailed steps to reproduce the bug.
 
 Documentation improvements
 ==========================
 
-Generate RSS feed for get_iplayer could always use more documentation, whether as part of the
-official Generate RSS feed for get_iplayer docs, in docstrings, or even on the web in blog posts,
+genrss-py could always use more documentation, whether as part of the
+official genrss-py docs, in docstrings, or even on the web in blog posts,
 articles, and such.
 
 Feature requests and feedback
@@ -87,3 +88,4 @@ To run a subset of tests::
 To run all the test environments in *parallel* (you need to ``pip install detox``)::
 
     detox
+

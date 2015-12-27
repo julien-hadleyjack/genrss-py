@@ -63,7 +63,7 @@ Generate RSS feed for get_iplayer
     :target: https://scrutinizer-ci.com/g/julien-hadleyjack/genrss-py/
 
 
-Generate RSS feed for get_iplayer.
+Create podcasts from get_iplayer downloads.
 
 * Free software: BSD license
 
@@ -82,6 +82,21 @@ https://genrss-py.readthedocs.org/
 Development
 ===========
 
+http://stackoverflow.com/questions/23172384/lxml-runtime-error-reason-incompatible-library-version-etree-so-requires-vers
+
+On a mac::
+
+    brew install libxml2
+    brew install libxslt
+    brew link libxml2 --force
+    brew link libxslt --force
+
 To run the all tests run::
 
     tox
+    PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 tox --recreate -e 2.7-cover
+
+Open issues
+===========
+
+* Check if thumbnails exist

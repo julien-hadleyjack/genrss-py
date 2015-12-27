@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
+ <channel>
+
+   {% if title.startswith("BBC") %}
+   <title>{{ title }}</title>
+   {% else %}
+   <title>BBC: {{ title }}</title>
+   {% endif %}
+   <link>{{ html_description }}</link>
+   <language>en-gb</language>
+   <copyright>{{ config["copyright"] }}</copyright>
+   <itunes:subtitle>subtitle: {{ short_description }}</itunes:subtitle>
+   <itunes:author>{{ config["name"] }}</itunes:author>
+   <itunes:summary>summary: {{ short_description }}</itunes:summary>
+   <description>description: {{ short_description }}</description>
+
+   <itunes:owner>
+    <itunes:name>{{ config["name"] }}</itunes:name>
+    <itunes:email>{{ config["email"] }}</itunes:email>
+   </itunes:owner>
+
+   <itunes:image href="{{ image_url }}" />
+
+   <itunes:category text="Music" />
+
+   {% for episode in sorted_episodes %}
+   <item>
+       {% if is_collection %}
+       <title>{{ episode.show }}: {{ episode.title }}</title>
+       {% else %}
+       <title>{{ episode.title }}</title>
+       {% endif %}
+       <itunes:author>{{ config["name"] }}</itunes:author>
+       <itunes:subtitle>{{ episode.description }}</itunes:subtitle>
+       <itunes:summary><![CDATA[
+         <p>{{ episode.description }} (<a href="{{ episode.url }}">Link</a>)</a></p>
+         {% if episode.tracklist %}
+         <h2>Tracklist</h2>
+         <p>
+         {% for track in episode.tracklist %}
+          {% set spotify_link = "https://open.spotify.com/search/" ~ track[0]|replace(" ", "+") ~ "+" ~ track[1]|replace(" ", "+") %}
+          {{ track[0] }} - {{ track[1] }} (<a href="{{ spotify_link }}">Spotify</a>)<br>
+         {% endfor %}
+         </p>
+         {% endif %}
+         ]]></itunes:summary>
+       <itunes:image href="{{ episode.thumbnail }}" />
+       <enclosure length="{{ episode.file_size }}" type="{{ episode.media_type }}" url="{{ episode.feed_url }}" />
+       <guid>{{ episode.file_url }}</guid>
+       <pubDate>{{ episode.format_date() }}</pubDate>
+       <itunes:duration>7:04</itunes:duration>
+   </item>
+
+   {% endfor %}
+ </channel>
+</rss>

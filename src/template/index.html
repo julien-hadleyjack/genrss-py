@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Podcasts</title>
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css"
+          media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8">
+</head>
+
+<body>
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">Podcasts</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="http://www.bbc.co.uk/radio">BBC Radio</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="container">
+    <div class="row">
+
+        {% for podcast in manager.get_all_podcasts() %}
+        <div class="col l3 m6 s12">
+            <div class="card medium hoverable">
+                <div class="card-image">
+                    <img src="{{ podcast.image_url }}" width="100%">
+                </div>
+                <div class="card-content white-text blue-grey darken-1">
+                    <span class="card-title">{{ podcast.title|replace("BBC: ", "")|truncate(25, True) }}</span>
+                    {# <p>{{ podcast.shows|length }} episodes.</p> #}
+                </div>
+                <div class="card-action">
+                    <a href="{{ podcast.get_rss_filename() }}">RSS</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+</body>
+</html>

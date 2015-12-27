@@ -1,0 +1,74 @@
+# The location where podcasts will be served from.
+url-base: http://domain.com
+
+# The location where the files are stored on disk.
+file-base: /tmp/genrss-py/
+
+# The name of the contact person for the podcast
+name: John Smith
+
+# The email address of the contact persion
+email: john@domain.com
+
+# The copyright notice shown
+copyright: John Smith (2015)
+
+# These setting don't need to be changed for normal use.
+# If something isn't working, you can often fix it here.
+technical:
+
+  # Only add episodes to the podcast that can be found on disk.
+  check-episode: false
+
+  # The location of the database where the tracklist for each episode is saved
+  tracklist-db: ~/.get_iplayer/tracklist.json
+
+  # The location of the file containing the download history created by get_iplayer
+  download-history: ~/.get_iplayer/download_history
+
+  # The size of the thumbnail in the format 'width'x'height'
+  thumbnail-size: 1920x1080
+
+  # The name that should be used for the thumbnail
+  image-name: feed_image.jpg
+
+  # The file name for the HTML output
+  overview-path: index.html
+
+  # If the tracklist be fetched and shown in the description for a episode
+  tracklist: True
+
+# Settings for logging. This is passed directly to the logging module using 'logging.basicConfig'
+logging:
+
+  # The schema version. Recommend by the logging documentation
+  # version: 1
+
+  # The minimum log level for a message so that it will be shown.
+  level: INFO
+
+  # The string format for a message
+  format: "[%(levelname)s] %(message)s"
+
+# Default data that is used if the information is missing.
+fallback:
+
+  # Default image to use for a podcast.
+  image-url: //icon.jpg
+
+  # File name for podcast that contains all the episodes not in separate feeds.
+  rss-file: feed.rss
+
+  # The default title of a podcast
+  title: BBC Podcast
+
+  # The default description of a podcast
+  short-description: A Podcast with the rest of the BBC programmes
+
+  # The default url where a longer description of the podcast is available
+  html-description: //description.html
+
+# A list of all shows that appear as their own feed.
+# All episodes of other shows appear in the fallback podcast
+shows:
+  - BBC Radio 1's Essential Mix

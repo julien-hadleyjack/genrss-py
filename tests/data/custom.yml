@@ -1,0 +1,21 @@
+# Custom settings for testing
+
+technical:
+  check-episode: false
+
+  download-history: {{ PATH }}/data/download_history
+
+  tracklist-db: {{ PATH }}/data/tracklist.json
+
+  tracklist: True
+
+logging:
+  level: DEBUG
+
+  format: "[%(levelname)s] %(message)s"
+
+shows:
+  - Gilles Peterson
+  - Pete Tong
+  - World on 3
+  - BBC Radio 1's Essential Mix

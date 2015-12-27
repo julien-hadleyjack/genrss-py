@@ -20,7 +20,7 @@ if os.getenv('SPELLCHECK'):
 
 source_suffix = '.rst'
 master_doc = 'index'
-project = 'Generate RSS feed for get_iplayer'
+project = 'genrss-py'
 year = '2015'
 author = 'Julien Hadley Jack'
 copyright = '{0}, {1}'.format(year, author)
