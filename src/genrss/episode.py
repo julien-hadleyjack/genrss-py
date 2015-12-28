@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import pytz as pytz
+
 from . import CONFIG, get_logger
 import os
 import re
@@ -32,13 +34,13 @@ class Episode(object):
         self.exists = os.path.exists(self.file_path)
         self.file_size = os.path.getsize(self.file_path) if self.exists else "0"
 
-        self.feed_url = self.feed_url()
+        self.feed_url = self.generate_feed_url()
 
         self.tracklist = TracklistManager.get_tracklist(self.pid) if CONFIG["technical"]["tracklist"] else []
 
         get_logger().debug("Creating Episode:\n\t%s", repr(self))
 
-    def feed_url(self):
+    def generate_feed_url(self):
         base = CONFIG["url-base"]
         folder = self.sub_directory + "/" if self.sub_directory else ""
         return base + folder + self.file_name
@@ -60,8 +62,8 @@ class Episode(object):
         return extension.get(file_extension, "audio/mpeg")
 
     def format_date(self):
-        dt = datetime.datetime.fromtimestamp(int(self.time_added))
-        return dt.strftime("%a, %d %b %Y %H:%M:%S +0100")
+        dt = datetime.datetime.fromtimestamp(int(self.time_added), tz=pytz.utc)
+        return dt.strftime("%a, %d %b %Y %H:%M:%S %z")
 
     def __bool__(self):
         return self.exists

@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import anyconfig
 import os
 import logging
@@ -7,7 +10,7 @@ __version__ = "0.1.0"
 
 PATH = os.path.dirname(os.path.abspath(__file__))
 
-config_path = [os.path.join(PATH, "../config/default.yml"), "~/genrss.yml"]
+config_path = [os.path.join(PATH, "config/default.yml"), "~/genrss.yml"]
 CONFIG = anyconfig.load(config_path, ignore_missing=True)
 
 if not CONFIG["url-base"].endswith("/"):

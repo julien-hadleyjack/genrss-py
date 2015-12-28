@@ -45,7 +45,7 @@ class PodcastManager(object):
             podcast.episodes.append(episode)
 
     def generate_html(self):
-        env = Environment(loader=FileSystemLoader(os.path.join(PATH, '../template')),
+        env = Environment(loader=FileSystemLoader(os.path.join(PATH, 'template')),
                           autoescape=True, trim_blocks=True, lstrip_blocks=True)
         template = env.get_template("index.html")
         output = template.render(config=CONFIG, manager=self)
@@ -133,7 +133,7 @@ class Podcast():
 
         sorted_episodes = sorted(self.episodes, key=attrgetter('time_added'))
 
-        env = Environment(loader=FileSystemLoader(os.path.join(PATH, '../template')),
+        env = Environment(loader=FileSystemLoader(os.path.join(PATH, 'template')),
                           autoescape=True, trim_blocks=True, lstrip_blocks=True)
         template = env.get_template("feed.rss")
         output = template.render(config=CONFIG, sorted_episodes=sorted_episodes, **self.__dict__)

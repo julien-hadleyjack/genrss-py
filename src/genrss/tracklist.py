@@ -17,7 +17,6 @@ class TracklistManager(object):
     @classmethod
     def get_tracklist(cls, pid):
         result = cls.db.get(Query().pid == pid)
-        get_logger().info("Result for pid %s: %s", pid, result)
         if not result:
             get_logger().debug("Getting tracklist for: %s", pid)
             tracklist = Tracklist(pid).listing

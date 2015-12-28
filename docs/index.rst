@@ -1,5 +1,5 @@
-Welcome to Generate RSS feed for get_iplayer's documentation!
-===============================================================
+Welcome to genrss-py's documentation!
+=====================================
 
 Contents:
 

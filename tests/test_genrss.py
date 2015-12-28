@@ -16,7 +16,7 @@ def initialize():
 
     tmp_dir = os.path.dirname(genrss.CONFIG["technical"]["tracklist-db"])
     if not os.path.exists(tmp_dir):
-        os.makedirs(tmp_dir, exist_ok=True)
+        os.makedirs(tmp_dir)
 
     logging.basicConfig(**genrss.CONFIG["logging"])
 
@@ -90,14 +90,15 @@ class TestEpisode(unittest.TestCase):
 
     def test_date(self):
         expected = [
-            "Sat, 10 May 2014 06:00:44 +0100",
-            "Sun, 08 Jun 2014 19:06:11 +0100",
-            "Sat, 21 Jun 2014 04:02:21 +0100",
-            "Thu, 26 Jun 2014 19:17:49 +0100",
-            "Thu, 26 Jun 2014 19:21:36 +0100",
-            "Thu, 26 Jun 2014 19:24:23 +0100"
+            "Sat, 10 May 2014 04:00:44 +0000",
+            "Sun, 08 Jun 2014 17:06:11 +0000",
+            "Sat, 21 Jun 2014 02:02:21 +0000",
+            "Thu, 26 Jun 2014 17:17:49 +0000",
+            "Thu, 26 Jun 2014 17:21:36 +0000",
+            "Thu, 26 Jun 2014 17:24:23 +0000"
         ]
         for episode, expected_date in zip(self.test_episodes[::5], expected):
+            get_logger().warn("Timestamp: %s", episode.time_added)
             self.assertEqual(expected_date, episode.format_date())
 
 
