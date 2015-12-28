@@ -54,7 +54,7 @@ logging:
 fallback:
 
   # Default image to use for a podcast.
-  image-url: //icon.jpg
+  image-url: /icon.jpg
 
   # File name for podcast that contains all the episodes not in separate feeds.
   rss-file: feed.rss

@@ -70,25 +70,24 @@ class Podcast():
         self.short_description = short_description or CONFIG["fallback"]["short-description"]
         self.html_description = html_description or CONFIG["fallback"]["html-description"]
 
-        self.image_url = self.get_podcast_image()
-
         get_logger().debug("Creating podcast:\n\t%s", repr(self))
 
     @staticmethod
     def format_date(dt):
         return dt.strftime("%a, %d %b %Y %H:%M:%S +0100")
 
-    def get_podcast_image(self):
+    @property
+    def image_url(self):
         image_url = CONFIG["fallback"]["image-url"]
 
         if not self.is_collection and len(self.episodes) > 0:
             image_location = None
-            image_name = CONFIG["fallback"]["image-name"]
+            image_name = CONFIG["technical"]["image-name"]
 
             for episode in self.episodes:
                 location = os.path.join(episode.directory_path, image_name)
                 if os.path.exists(location):
-                    image_location = locals()
+                    image_location = location
                     image_url = episode.url_base + image_name
                     break
             if not image_location:
@@ -97,6 +96,7 @@ class Podcast():
                         image_location = os.path.join(episode.directory_path, image_name)
                         urlretrieve(episode.thumbnail, image_location)
                         image_url = episode.url_base + image_name
+                        break
 
             if image_location:
                 self.crop_image(image_location)
