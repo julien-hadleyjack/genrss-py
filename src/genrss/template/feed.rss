@@ -2,25 +2,25 @@
 <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
  <channel>
 
-   {% if title.startswith("BBC") %}
-   <title>{{ title }}</title>
+   {% if podcast.title.startswith("BBC") %}
+   <title>{{ podcast.title }}</title>
    {% else %}
-   <title>BBC: {{ title }}</title>
+   <title>BBC: {{ podcast.title }}</title>
    {% endif %}
-   <link>{{ html_description }}</link>
+   <link>{{ podcast.html_description }}</link>
    <language>en-gb</language>
    <copyright>{{ config["copyright"] }}</copyright>
-   <itunes:subtitle>subtitle: {{ short_description }}</itunes:subtitle>
+   <itunes:subtitle>subtitle: {{ podcast.short_description }}</itunes:subtitle>
    <itunes:author>{{ config["name"] }}</itunes:author>
-   <itunes:summary>summary: {{ short_description }}</itunes:summary>
-   <description>description: {{ short_description }}</description>
+   <itunes:summary>summary: {{ podcast.short_description }}</itunes:summary>
+   <description>description: {{ podcast.short_description }}</description>
 
    <itunes:owner>
     <itunes:name>{{ config["name"] }}</itunes:name>
     <itunes:email>{{ config["email"] }}</itunes:email>
    </itunes:owner>
 
-   <itunes:image href="{{ image_url }}" />
+   <itunes:image href="{{ podcast.image_url() }}" />
 
    <itunes:category text="Music" />
 
@@ -47,9 +47,9 @@
          ]]></itunes:summary>
        <itunes:image href="{{ episode.thumbnail }}" />
        <enclosure length="{{ episode.file_size }}" type="{{ episode.media_type }}" url="{{ episode.feed_url }}" />
-       <guid>{{ episode.file_url }}</guid>
+       <guid>{{ episode.pid }}</guid>
        <pubDate>{{ episode.format_date() }}</pubDate>
-       <itunes:duration>7:04</itunes:duration>
+       <itunes:duration>{{ episode.duration }}</itunes:duration>
    </item>
 
    {% endfor %}

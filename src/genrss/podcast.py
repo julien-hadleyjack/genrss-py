@@ -76,7 +76,6 @@ class Podcast():
     def format_date(dt):
         return dt.strftime("%a, %d %b %Y %H:%M:%S +0100")
 
-    @property
     def image_url(self):
         image_url = CONFIG["fallback"]["image-url"]
 
@@ -131,12 +130,12 @@ class Podcast():
             get_logger().info("No episodes found for %s. Can't save rss feed", self.title)
             return
 
-        sorted_episodes = sorted(self.episodes, key=attrgetter('time_added'))
+        sorted_episodes = sorted(self.episodes, key=attrgetter('time_added'), reverse=True)
 
         env = Environment(loader=FileSystemLoader(os.path.join(PATH, 'template')),
                           autoescape=True, trim_blocks=True, lstrip_blocks=True)
         template = env.get_template("feed.rss")
-        output = template.render(config=CONFIG, sorted_episodes=sorted_episodes, **self.__dict__)
+        output = template.render(config=CONFIG, sorted_episodes=sorted_episodes, podcast=self)
 
         file_path = os.path.join(CONFIG["file-base"], self.get_rss_filename())
         with open(file_path, "w", encoding="utf8") as file:

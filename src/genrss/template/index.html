@@ -33,7 +33,7 @@
         <div class="col l3 m6 s12">
             <div class="card medium hoverable">
                 <div class="card-image">
-                    <img src="{{ podcast.image_url }}" width="100%">
+                    <img src="{{ podcast.image_url() }}" width="100%">
                 </div>
                 <div class="card-content white-text blue-grey darken-1">
                     <span class="card-title">{{ podcast.title|replace("BBC: ", "")|truncate(25, True) }}</span>
