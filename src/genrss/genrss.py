@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from episode import Episode
-from history import History
-from podcast import PodcastManager
+from .episode import Episode
+from .history import History
+from .podcast import PodcastManager
 
 
 def generate_podcasts():
