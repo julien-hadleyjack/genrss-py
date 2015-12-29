@@ -40,10 +40,13 @@ class Episode(object):
 
         get_logger().debug("Creating Episode:\n\t%s", repr(self))
 
-    def generate_feed_url(self):
+    def url_base(self):
         base = CONFIG["url-base"]
         folder = self.sub_directory + "/" if self.sub_directory else ""
-        return base + folder + self.file_name
+        return base + folder
+
+    def generate_feed_url(self):
+        return self.url_base() + self.file_name
 
     def get_subdir_name(self):
         subdir_name = re.sub("[']+", "", self.show)

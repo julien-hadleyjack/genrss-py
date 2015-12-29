@@ -87,7 +87,7 @@ class Podcast():
                 location = os.path.join(episode.directory_path, image_name)
                 if os.path.exists(location):
                     image_location = location
-                    image_url = episode.url_base + image_name
+                    image_url = episode.url_base() + image_name
                     break
             if not image_location:
                 for episode in self.episodes:

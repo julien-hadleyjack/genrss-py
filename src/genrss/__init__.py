@@ -36,6 +36,7 @@ def get_logger():
     global logger_instance
     if logger_instance is None:
         logging.basicConfig(**CONFIG["logging"])
+        logging.getLogger("requests").setLevel(logging.WARNING)
         logger_instance = logging.getLogger(__name__)
         logger_instance.debug("Loading logger: %s", CONFIG["logging"])
     return logger_instance
