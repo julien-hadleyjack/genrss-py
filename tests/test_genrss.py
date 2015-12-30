@@ -60,25 +60,25 @@ class TestEpisode(unittest.TestCase):
 
     def test_subdir_name(self):
         directory_names = [
-            '6_Mix',
-            'Annie_Mac',
-            'BBC_Radio_1s_Essential_Mix',
-            'Composer_of_the_Week',
-            'DJ_Edu_-_Destination_Africa',
-            'David_Rodigan',
-            'Don_Letts',
-            'Essential_Classics',
-            'Gilles_Peterson',
-            'Hip_Hop_with_Semtex',
-            'Jamie_Cullum',
-            'My_Playlister',
-            'Pete_Tong',
-            'RnB_with_CJ_Beatz',
-            'The_Craig_Charles_Funk_and_Soul_Show',
-            'Through_the_Night',
-            'Trevor_Nelsons_Soul_Show',
-            'UKG_with_Cameo',
-            'World_on_3'
+            '6_Mix/',
+            'Annie_Mac/',
+            'BBC_Radio_1s_Essential_Mix/',
+            'Composer_of_the_Week/',
+            'DJ_Edu_-_Destination_Africa/',
+            'David_Rodigan/',
+            'Don_Letts/',
+            'Essential_Classics/',
+            'Gilles_Peterson/',
+            'Hip_Hop_with_Semtex/',
+            'Jamie_Cullum/',
+            'My_Playlister/',
+            'Pete_Tong/',
+            'RnB_with_CJ_Beatz/',
+            'The_Craig_Charles_Funk_and_Soul_Show/',
+            'Through_the_Night/',
+            'Trevor_Nelsons_Soul_Show/',
+            'UKG_with_Cameo/',
+            'World_on_3/'
         ]
 
         for episode in self.test_episodes:

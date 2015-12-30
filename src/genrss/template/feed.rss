@@ -26,7 +26,7 @@
 
    {% for episode in sorted_episodes %}
    <item>
-       {% if is_collection %}
+       {% if podcast.is_collection %}
        <title>{{ episode.show }}: {{ episode.title }}</title>
        {% else %}
        <title>{{ episode.title }}</title>

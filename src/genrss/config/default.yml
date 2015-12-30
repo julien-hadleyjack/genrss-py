@@ -54,7 +54,7 @@ logging:
 fallback:
 
   # Default image to use for a podcast.
-  image-url: /icon.jpg
+  image-url: icon.jpg
 
   # File name for podcast that contains all the episodes not in separate feeds.
   rss-file: feed.rss
@@ -66,7 +66,7 @@ fallback:
   short-description: A Podcast with the rest of the BBC programmes
 
   # The default url where a longer description of the podcast is available
-  html-description: /description.html
+  html-description: index.html
 
 # A list of all shows that appear as their own feed.
 # All episodes of other shows appear in the fallback podcast

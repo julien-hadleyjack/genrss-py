@@ -40,19 +40,14 @@ class Episode(object):
 
         get_logger().debug("Creating Episode:\n\t%s", repr(self))
 
-    def url_base(self):
-        base = CONFIG["url-base"]
-        folder = self.sub_directory + "/" if self.sub_directory else ""
-        return base + folder
-
     def generate_feed_url(self):
-        return self.url_base() + self.file_name
+        return CONFIG["url-base"] + self.sub_directory + self.file_name
 
     def get_subdir_name(self):
         subdir_name = re.sub("[']+", "", self.show)
         subdir_name = re.sub("[^a-zA-Z0-9_\-\./]+", "_", subdir_name)
         directory_name = os.path.split(self.directory_path)[1]
-        return directory_name if directory_name == subdir_name else ""
+        return directory_name + "/" if directory_name == subdir_name else ""
 
     @staticmethod
     def get_media_type(file_extension):

@@ -11,7 +11,7 @@ from urllib.request import urlretrieve
 from io import open
 
 from PIL import Image
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
 from . import CONFIG, get_logger, PATH
 
@@ -26,7 +26,6 @@ class PodcastManager(object):
         return list(self.podcasts.values()) + [self.fallback]
 
     def add_episode(self, episode):
-
         """
 
         :param episode:
@@ -46,7 +45,8 @@ class PodcastManager(object):
 
     def generate_html(self):
         env = Environment(loader=FileSystemLoader(os.path.join(PATH, 'template')),
-                          autoescape=True, trim_blocks=True, lstrip_blocks=True)
+                          autoescape=True, trim_blocks=True, lstrip_blocks=True,
+                          undefined=StrictUndefined)
         template = env.get_template("index.html")
         output = template.render(config=CONFIG, manager=self)
 
@@ -87,20 +87,20 @@ class Podcast():
                 location = os.path.join(episode.directory_path, image_name)
                 if os.path.exists(location):
                     image_location = location
-                    image_url = episode.url_base() + image_name
+                    image_url = episode.sub_directory + image_name
                     break
             if not image_location:
                 for episode in self.episodes:
                     if os.path.exists(episode.directory_path):
                         image_location = os.path.join(episode.directory_path, image_name)
                         urlretrieve(episode.thumbnail, image_location)
-                        image_url = episode.url_base + image_name
+                        image_url = episode.sub_directory + image_name
                         break
 
             if image_location:
                 self.crop_image(image_location)
 
-        return image_url
+        return CONFIG["url-base"] + image_url
 
     @staticmethod
     def crop_image(image_location):
@@ -133,7 +133,8 @@ class Podcast():
         sorted_episodes = sorted(self.episodes, key=attrgetter('time_added'), reverse=True)
 
         env = Environment(loader=FileSystemLoader(os.path.join(PATH, 'template')),
-                          autoescape=True, trim_blocks=True, lstrip_blocks=True)
+                          autoescape=True, trim_blocks=True, lstrip_blocks=True,
+                          undefined=StrictUndefined)
         template = env.get_template("feed.rss")
         output = template.render(config=CONFIG, sorted_episodes=sorted_episodes, podcast=self)
 

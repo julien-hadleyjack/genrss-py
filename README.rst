@@ -30,7 +30,7 @@ Create podcasts from get_iplayer downloads
     :target: https://landscape.io/github/julien-hadleyjack/genrss-py/master
     :alt: Code Quality Status
 
-.. |codacy| image:: https://img.shields.io/codacy/REPLACE_WITH_PROJECT_ID.svg?style=flat
+.. |codacy| image:: https://img.shields.io/codacy/297e8455747a4b0aa88f13e5c01f4906.svg?style=flat
     :target: https://www.codacy.com/app/julien-hadleyjack/genrss-py
     :alt: Codacy Code Quality Status
 
@@ -85,7 +85,6 @@ Development
 To run the all tests run::
 
     tox
-    PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 tox --recreate -e 2.7-cover
 
 
 .. _get_iplayer: https://github.com/get-iplayer/get_iplayer
