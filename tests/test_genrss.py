@@ -1,8 +1,8 @@
 import os
-from tinydb import TinyDB, Query
 import unittest
 
 import anyconfig
+from tinydb import TinyDB, Query
 
 from tests import TEST_PATH
 
@@ -10,9 +10,9 @@ from tests import TEST_PATH
 def initialize():
     import genrss
     import logging
-    PATH = TEST_PATH
-    genrss.CONFIG.update(
-        anyconfig.load(os.path.join(TEST_PATH, "data/custom.yml"), ac_template=True, ac_context=locals()))
+    test_config_path = [*genrss.config_path, TEST_PATH / "data" / "custom.yml"]
+    context = {"ROOT_DIR": TEST_PATH}
+    genrss.CONFIG = anyconfig.load(test_config_path, ac_ignore_missing=True, ac_template=True, ac_context=context)
 
     tmp_dir = os.path.dirname(genrss.CONFIG["technical"]["tracklist-db"])
     if not os.path.exists(tmp_dir):

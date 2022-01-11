@@ -3,9 +3,9 @@
 technical:
   check-episode: false
 
-  download-history: {{ PATH }}/data/download_history
+  download-history: {{ ROOT_DIR }}/data/download_history
 
-  tracklist-db: {{ PATH }}/data/tracklist.json
+  tracklist-db: {{ ROOT_DIR }}/data/tracklist.json
 
   tracklist: True
 

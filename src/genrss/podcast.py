@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from future.standard_library import install_aliases
-install_aliases()
-
 import os
 import re
 from operator import attrgetter
@@ -13,7 +10,7 @@ from io import open
 from PIL import Image
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
-from . import CONFIG, get_logger, PATH
+from . import CONFIG, get_logger, ROOT_DIR
 
 
 class PodcastManager(object):
@@ -44,7 +41,7 @@ class PodcastManager(object):
             podcast.episodes.append(episode)
 
     def generate_html(self):
-        env = Environment(loader=FileSystemLoader(os.path.join(PATH, 'template')),
+        env = Environment(loader=FileSystemLoader(ROOT_DIR / 'template'),
                           autoescape=True, trim_blocks=True, lstrip_blocks=True,
                           undefined=StrictUndefined)
         template = env.get_template("index.html")
@@ -132,7 +129,7 @@ class Podcast():
 
         sorted_episodes = sorted(self.episodes, key=attrgetter('time_added'), reverse=True)
 
-        env = Environment(loader=FileSystemLoader(os.path.join(PATH, 'template')),
+        env = Environment(loader=FileSystemLoader(ROOT_DIR / 'template'),
                           autoescape=True, trim_blocks=True, lstrip_blocks=True,
                           undefined=StrictUndefined)
         template = env.get_template("feed.rss")

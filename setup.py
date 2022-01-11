@@ -24,7 +24,7 @@ def read(*names, **kwargs):
 
 setup(
     name='genrss-py',
-    version='0.1.0',
+    version='0.2.0',
     license='BSD',
     description='Generate RSS feed for get_iplayer.',
     long_description='%s\n%s' % (read('README.rst'), re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst'))),
@@ -45,9 +45,8 @@ setup(
         'Operating System :: POSIX',
         'Operating System :: Microsoft :: Windows',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.9',
         'Topic :: Utilities',
     ],
     keywords=[
@@ -58,7 +57,7 @@ setup(
         "anyconfig",
         "PyYAML",
         "pillow",
-        "jinja2",
+        "jinja2>=3.0.0",
         "lxml",
         "requests",
         "future",

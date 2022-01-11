@@ -1,5 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import os
+from pathlib import Path
 
-TEST_PATH = os.path.abspath(os.path.dirname(__file__))
+TEST_PATH = Path(__file__).parent.absolute()

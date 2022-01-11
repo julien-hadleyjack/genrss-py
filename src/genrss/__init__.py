@@ -1,17 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import anyconfig
-import os
 import logging
+import os
+from pathlib import Path
 
+import anyconfig
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
-PATH = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = Path(__file__).parent.absolute()
 
-config_path = [os.path.join(PATH, "config/default.yml"), "~/genrss.yml"]
-CONFIG = anyconfig.load(config_path, ignore_missing=True)
+config_path = [
+    ROOT_DIR / "config" / "default.yml",
+    Path.home() / "genrss.yml",
+]
+CONFIG = anyconfig.load(config_path, ac_ignore_missing=True)
 
 
 def fix_config():
